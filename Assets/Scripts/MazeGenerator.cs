@@ -96,7 +96,9 @@ public class MazeGenerator : MonoBehaviour
                 current = stack[stack.Count - 1];
                 stack.RemoveAt(stack.Count - 1);
             
-            } 
+            }
+
+            
         }
 
         for (int i = 0; i < width; i++)
@@ -107,7 +109,10 @@ public class MazeGenerator : MonoBehaviour
                 GameObject tile = GameObject.Instantiate(tiles[map[i][j]]);
                 tile.transform.parent = gameObject.transform;
 
-                tile.transform.Translate(new Vector3 (i*tile_size, 0, j * tile_size));
+                tile.transform.Translate(new Vector3 (j*tile_size, 0, i * tile_size));
+                tile.name += " " + i.ToString() + ' ' + j.ToString(); 
+                //float waitFrames = Time.deltaTime * 2;
+                //yield return new WaitForSeconds(waitFrames);
             }
 
         }
